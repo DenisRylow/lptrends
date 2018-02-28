@@ -1,0 +1,175 @@
+console.log(typeof 123)
+console.log(typeof 'life is good /n Yo')
+
+console.log(8 * null)
+console.log('str' + 1)
+console.log('str' - 1)
+console.log('5' - 1)
+console.log('5' + 1)
+console.log("five" * 2)
+console.log(NaN == NaN, isNaN(NaN))
+console.log(false == 0)
+
+console.log(null == undefined);
+console.log(null == 0);
+
+console.log('' == false); \\true
+console.log(''  === false); \\false
+
+console.log(null || "user")
+console.log("Karl" || "user")
+
+var x = 0;
+var y = x;
+var z = -1;
+z = x;
+x++;
+console.log(x,y,z);
+console.log(Math.min(2, 4) + 100);
+var x = Number("2");
+console.log(x);
+console.log('heh ' + x);
+typeof(NaN)
+
+var number = 0;
+while (number <= 12) {
+  console.log(number);
+  number = number + 2;
+}
+
+var square = function(x) {
+  return x*x;
+  
+}
+//var creates variable local to funciont
+//let creates variable local to block
+console.log("The future says:", future());
+function future() {
+  return "We STILL have no flying cars.";
+}
+
+vat arr = [1,2,3,0];
+arr['length'];
+arr.push(-1);
+var day1 = {   
+  squirrel: false,   
+  events: ["work", "touched tree", "pizza", "running", "television"]
+};
+delete day1.squirrel;
+arr.shift()
+console.log([1, 2, 3, 2, 1].indexOf(2));
+console.log([0, 1, 2, 3, 4].slice(2, 4));
+
+var str = 'da123f';
+console.log(str.charat(1))
+
+function argsCounter(){
+    console.log('Passed ' + arguments.length + ' args.')
+};
+
+function forEach(array, action) {
+  for (var i = 0; i < array.length; i++)
+    action(array[i]);
+}
+
+function noisy(f) {
+  return function(arg) {
+    console.log("calling with", arg);
+    var val =  f(arg);
+    console.log("called with", arg, "- got", val);
+    return val;
+  };
+}
+
+var arr2 = [-1,-2.3,4,6,8,9];
+console.log(arr2.filter(function(x) { return x > 0 ? true : false;} ))
+console.log(arr2.map(function(x) { return x > 0 ? true : false;} ))
+console.log(arr2.reduce(function(y,x) { return y + (x > 0 ? 1 : 0);},0 )) \\count all positive numebr in array
+//bind fiex arguments
+forEach.bind(null,[2,3,4,56],function(x) {console.log(x)})
+Object.getPrototypeOf([1,2])
+var protoRabbit = {
+  speak: function(line) {
+    console.log("The " + this.type + " rabbit says '" +
+                line + "'");
+  }
+};
+Object.create(protoRabbit);
+function Rabbit(type) {
+  this.type = type;
+}
+var rab = new Rabbit('black');
+Rabbit.prototype.speak = function(line) {  
+  console.log("The " + this.type + " rabbit says '" +
+               line + "'");
+};
+var map = {};
+map['event'] = 2;
+map['event3'] = 3;
+for (var name in map)
+  console.log(name);
+Object.prototype.nonsense = 'hi';
+Object.defineProperty(Object.prototype, "hiddenNonsense", {enumerable: false, value: "hi"});
+console.log(map.hasOwnProperty("toString"));
+var map = Object.create(null);
+
+
+
+var parent = {
+    _text : 'parent',
+    getText : function() {return this._text},
+    get text() {return this._text}
+}
+parent.getText
+parent.getText()
+console.log(parent.prototype)
+
+function ParentCons(name) {
+  this.name = name
+  this.say = function() { console.log(name)}
+}
+ParentCons.prototype.sayT = function() { console.log(name)}
+
+function Child(name) {
+    ParentCons.call(this, name)
+    //this.prototype = Object.create(ParentCons.prototype);
+}
+
+var par2 = new ParentCons('da')
+par2.say()
+Child.prototype = Object.create(ParentCons.prototype);
+var chl =  new Child('np');
+var chl2 = Object.create(parent)
+Object.getPrototypeOf(chl)
+Object.getPrototypeOf(chl2)
+console.log(new Child('A') instanceof Child);
+
+throw new Error("Not enough context!");
+console.log(/abc/.test("abcde"));
+
+var pattern = /[^hell]/;
+console.log(pattern.test('one way to hell'));
+console.log(pattern.exec('one way to hell'));
+console.log(new Date());
+console.log("Borobudur".replace(/[ou]/g, "a"));
+
+var s = "the cia and fbi";
+console.log(s.replace(/\b(fbi|cia)\b/g, function(str, something) {
+  return str.toUpperCase() + something;
+}));
+
+var name = "dea+hl[]rd";
+var text = "This dea+hl[]rd guy is super annoying.";
+var escaped = name.replace(/[^\w\s]/g, "\\$&");
+var regexp = new RegExp("\\b(" + escaped + ")\\b", "gi");
+console.log(text.replace(regexp, "_$1_"));
+
+var pattern = /y/g;
+pattern.lastIndex = 3;
+var match = pattern.exec("xyzzy");
+console.log(match.index);
+
+
+
+var plusOne = new Function("n", "return n + 1;");
+console.log(plusOne(4));

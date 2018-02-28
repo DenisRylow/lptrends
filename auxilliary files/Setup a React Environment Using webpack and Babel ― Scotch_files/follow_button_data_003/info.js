@@ -1,0 +1,1 @@
+/**/__twttr.setFollowersCountAndFollowing([{"following":false,"id":"130668248","screen_name":"chrisoncode","name":"Chris Sevilleja","protected":false,"followers_count":7406,"formatted_followers_count":"7,406 followers","age_gated":false}]);

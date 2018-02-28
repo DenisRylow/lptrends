@@ -1,0 +1,15 @@
+.header {
+  background-color: lightblue;
+  padding: 20px;
+  color: black;
+}
+.firstRow {
+  background-color: #f2dede !important;
+}
+.secondRow {
+  background-color: white !important;
+}
+.customButton{
+	background-color: lightblue;
+	width: 100px;
+}

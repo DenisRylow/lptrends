@@ -1,0 +1,1 @@
+/**/__twttr.setFollowersCountAndFollowing([{"following":false,"id":"464618180","screen_name":"Kare_joy","name":"Joy Warugu","protected":false,"followers_count":444,"formatted_followers_count":"444 followers","age_gated":false}]);
