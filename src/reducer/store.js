@@ -1,8 +1,9 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import addDeleteRecord from './reducer';
+import { reducer as reduxFormReducer } from 'redux-form';
 
 export const reducer = combineReducers({
-  //form: reduxFormReducer,// mounted under "form"
+  form: reduxFormReducer,// mounted under "form"
   addDeleteRecord 
 });
 
@@ -34,4 +35,4 @@ function configureStore(initialState = {}) {
   return store;
 };
 
-export const store = createStore(reducer, initialState);  
+export const store = createStore(reducer, {addDeleteRecord: initialState});  

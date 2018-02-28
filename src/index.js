@@ -3,7 +3,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 
-import { reducer, initialState  } from './reducer/store';
+import { store } from './reducer/store';
 import { createStore } from 'redux';
 import addDeleteRecord from './reducer/reducer';
 
@@ -23,10 +23,12 @@ import store from "./store";
 import AppContainer from './AppContainer';
 import store from './reducer/store';
 
-let store = createStore(combinedReducers)*/
+let store = createStore(combinedReducers)
+<Provider store={createStore(addDeleteRecord, initialState)}>
+*/
 
 ReactDOM.render(	
-	  <Provider store={createStore(addDeleteRecord, initialState)}>
+	  <Provider store={store}>
 		 <AppContainer />
 	  </Provider>,
 	document.getElementById('app')
