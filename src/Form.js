@@ -19,7 +19,8 @@ class ReduxForm extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        form: ownProps.name
+        form: ownProps.name,
+        onSubmit: ownProps.submit
     }
 }
 

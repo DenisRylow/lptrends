@@ -3,30 +3,20 @@ import React from 'react';
 import { Table, Form, Button } from 'react-bootstrap';
 import './App.css';
 import ReduxFormContainer from './Form';
-import { formValueSelector } from 'redux-form';
+import RemoteSubmitButton  from './AddButton';
 
 class App extends React.Component {
 	produceAddRow() {
 		return(
 			<tbody>
 				<td className="secondRow">
-					<ReduxFormContainer name="name" />
+					<ReduxFormContainer name="name" submit={(values) => {console.log(values)}} />
 				</td>
 				<td className="secondRow">
-					<ReduxFormContainer name="email" />
+					<ReduxFormContainer name="email" submit={(values) => {console.log(values)}} />
 				</td>
 				<td className="secondRow"> 
-					<Button 
-						className="customButton"
-						onClick={() => {
-							const selectorName = formValueSelector('name');
-							const selectorEmail = formValueSelector('email');
-							
-
-	
-							console.log(this.props, this.props.name)}}> 
-	        				 Add
-	        		</Button>
+					<RemoteSubmitButton forms={["name", "email"]}/>
 				</td>
 			</tbody>
 		)
