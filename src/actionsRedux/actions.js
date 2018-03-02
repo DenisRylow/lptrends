@@ -19,6 +19,13 @@ export const validateAndAddRecordEmailName = () => {
 	}
 }
 
+export const resetErrorFlag = (formName) => {
+	return {
+		type: 'RESET_ERROR_FLAG',
+		formName
+	}
+}
+
 
 export const deleteRecord = (id) => {
 	return {

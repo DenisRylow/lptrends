@@ -28,16 +28,23 @@ export const addDeleteRecord = (state = {}, action) => {
 		and the value of the corresponding input field. This value
 		is stored in property 'name' of 'forms' object.
 		*/
+		case 'RESET_ERROR_FLAG':
+			var newState = Object.assign({}, state);
+			newState.errorFlags[action.formName] = 'valid';
+			console.log('Reset flag for form ', action.formName);
+			return newState;
 		case 'ADD_RECORD_EMAIL_NAME':
 			return addToRecordsEmailName(state);
 		case 'VALIDATE_ADD_RECORD_EMAIL_NAME':
-			state.errorFlags['name'] = checkName(state.forms['name']);
-			state.errorFlags['email'] = checkName(state.forms['email']);
-			if (state.errorFlags['name'] == 'valid' && state.errorFlags['email'] == 'valid') {
+			var newState = Object.assign({}, state);
+			newState.errorFlags['name'] = checkName(state.forms['name']);
+			newState.errorFlags['email'] = checkName(state.forms['email']);
+			if (newState.errorFlags['name'] == 'valid' && newState.errorFlags['email'] == 'valid') {
 				console.log('Adding a new record to the table.');
-				return addToRecordsEmailName(state);
+				return addToRecordsEmailName(newState);
 			} else {
-				return state;
+				console.log('Input is invalid. No record has been added.');
+				return newState;
 			};
 		case 'DELETE_RECORD':
 			console.log('Deleting record.');

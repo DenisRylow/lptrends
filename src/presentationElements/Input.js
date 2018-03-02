@@ -11,7 +11,7 @@ class Input extends Component {
         type='text'
         className={errorState}
         placeholder={(typeof placeHolderText != 'undefined') && placeHolderText}
-           onChange={(e) => {
+        onChange={(e) => {
         	console.log('Form ', formName, ' updates with value', e.target.value);
         	onChangeAction(e.target.value, formName);
         }}/>

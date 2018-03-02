@@ -36,7 +36,7 @@ class App extends React.Component {
 					This button performs validation and dispatches an action via
 					Redux to add the record consisting of name and email to the table.
 					*/} 
-					<RemoteSubmitButton onClick={() => this.props.addRecordEmailName}/>				
+					<RemoteSubmitButton onClick={() => this.props.alidateAndAddRecordEmailName}/>				
 				</td>
 			</tbody>
 		)
