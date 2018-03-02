@@ -1,21 +1,20 @@
 import { connect } from 'react-redux';
-import { addRecord, deleteRecord } from './actions/actions';
+import { addRecordEmailName, deleteRecord, updateFormFieldValue } from './actionsRedux/actions';
 import React from 'react';
 import { Table, Form, Button } from 'react-bootstrap';
-import './App.css';
-import App from './App.js';
+import App from './presentationElements/App.js';
 
 const mapStateToProps = (state) => {
-	//const props = { records: state.records };
 	const props = { records: state.addDeleteRecord.records };
-	console.log('props: ',props);
-	console.log('state is ',state);
+	console.log('props: ', props);
+	console.log('state is ', state);
 	return props;
 };
 
 const mapDispatchToProps = {
-	addRecord, 
-	deleteRecord 
+	addRecordEmailName, 
+	deleteRecord,
+	updateFormFieldValue 
 };
 
 const AppContainer = connect(

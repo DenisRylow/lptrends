@@ -1,7 +1,6 @@
-import { addRecord, deleteRecord } from './actions/actions';
 import React from 'react';
 import { Table, Form, Button } from 'react-bootstrap';
-import './App.css';
+import '../css/App.css';
 import ReduxFormContainer from './Form';
 import RemoteSubmitButton  from './AddButton';
 
@@ -9,14 +8,35 @@ class App extends React.Component {
 	produceAddRow() {
 		return(
 			<tbody>
-				<td className="secondRow">
-					<ReduxFormContainer name="name" submit={(values) => {console.log(values)}} />
+				{/* 
+				There is a single form with a single input field in each 'ReduxFormContainer'.		
+				The callback function 'this.props.updateFormFieldValue' is sent to every container.
+				This function updates the 'forms' object in the global Redux state which
+				stores the value of each corresponding form.
+				Updating is done via Redux dispatch.
+				*/} 
+				<td className='secondRow'>
+					<ReduxFormContainer 
+					name='name'
+					placeHolderText='Enter name' 
+					onChangeAction={(value, formName)=> {this.props.updateFormFieldValue(value, formName)}} /> 
+				</td>
+				{/* 
+				Everytime the input fields in forms change, the unput values are written to global
+				Redux state via this.props.updateFormFieldValue(value, formName) method.  
+				*/} 
+				<td className='secondRow'>
+					<ReduxFormContainer 
+					name='email'
+					placeHolderText='Enter email' 
+					onChangeAction={(value, formName)=> {this.props.updateFormFieldValue(value, formName)}} />   
 				</td>
 				<td className="secondRow">
-					<ReduxFormContainer name="email" submit={(values) => {console.log(values)}} />
-				</td>
-				<td className="secondRow"> 
-					<RemoteSubmitButton forms={["name", "email"]}/>
+					{/*  
+					This button performs validation and dispatches an action via
+					Redux to add the record consisting of name and email to the table.
+					*/} 
+					<RemoteSubmitButton onClick={() => this.props.addRecordEmailName}/>				
 				</td>
 			</tbody>
 		)
@@ -64,7 +84,7 @@ class App extends React.Component {
 		return(
 			<div>
                 {/* Warning */}
-                {this.produceWarning() }
+                //{this.produceWarning() }
                 {/* Table with emails  */}
                 <Table>
                     <tbody>
@@ -74,7 +94,7 @@ class App extends React.Component {
 							<td className="header"> </td>
 						</tbody>
 						{this.produceAddRow()}
-						{(typeof this.props.records != 'undefined') &&
+							{(typeof this.props.records != 'undefined') &&
 							this.props.records.map((item,index) => {
                         		return(this.produceTableRow(item, index))
                         	})
@@ -87,3 +107,6 @@ class App extends React.Component {
 }
 
 export default App;
+
+{/* 
+onChangeAction={(value, formName)=> {this.props.updateFormFieldValue(value, formName)}*/}

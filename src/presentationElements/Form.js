@@ -2,15 +2,26 @@ import React, { Component } from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-//https://stackoverflow.com/questions/40509754/how-do-you-pass-in-a-dynamic-form-name-in-redux-form
+import  Input  from './Input';
 
 class ReduxForm extends Component {
 	render() {
-		const {handleSubmit, reset} = this.props;
+		const {
+			handleSubmit, 
+			reset,
+			form,
+			errorFlag,
+			onChangeAction,
+			placeHolderText } = this.props;
 		return(
 			<form onSubmit={ handleSubmit }>
 				<div>
-					<Field name="fieldValue" component="input" type="text"/>
+					<Field 
+					formName={form}
+					component={Input}
+					errorFlag={errorFlag}
+					placeHolderText={placeHolderText}
+					onChangeAction={onChangeAction}/>
 				</div>
 			</form>
 		);
@@ -28,3 +39,4 @@ export default compose(
     connect(mapStateToProps),
     reduxForm({})
 )(ReduxForm);
+

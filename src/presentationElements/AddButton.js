@@ -2,15 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { submit } from 'redux-form';
 import { Button } from 'react-bootstrap';
-import './App.css';
+import '../css/App.css';
 
-const RemoteSubmitButton = ({ dispatch, forms }) => (
+
+const RemoteSubmitButton = ({ dispatch, onClick }) => (
 	<Button 
 	className="customButton"
-	onClick={() => {
-		forms.forEach((item) => dispatch(submit(item)));
-		//console.log(forms);
-	}}> 
+	onClick={onClick()}> 
 		 Add
 	</Button>
 );
