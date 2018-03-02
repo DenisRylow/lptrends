@@ -1,3 +1,12 @@
+const addToRecordsEmailName = (state) => {
+	let record = { 
+		name: state.forms['name'], 
+		email: state.forms['email']
+	};
+	return Object.assign({}, state, {
+		records: state.records.concat([record])
+	});
+};
 export const addDeleteRecord = (state = {}, action) => {
 	switch (action.type) {
 		/* 
