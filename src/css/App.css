@@ -1,15 +1,25 @@
 .header {
-  background-color: lightblue;
-  padding: 20px;
-  color: black;
+	background-color: lightblue;
+	padding: 20px;
+	color: black;
+	width: 33%;
 }
 .firstRow {
-  background-color: #f2dede !important;
+	background-color: #f2dede !important;
+	width: 33%;
 }
 .secondRow {
-  background-color: white !important;
+	background-color: white !important;
+	width: 33%;
 }
 .customButton{
 	background-color: lightblue;
 	width: 100px;
+	margin-left: 80px;
+}
+.table {
+	margin: auto;
+	width: 70% !important; 
+	table-layout: fixed;
+	word-wrap: break-word;
 }

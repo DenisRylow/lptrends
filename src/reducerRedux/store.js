@@ -1,6 +1,7 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { addDeleteRecord } from './reducer';
 import { reducer as reduxFormReducer } from 'redux-form';
+import { getRecordsFromLocal, writeRecordsToLocal } from './localStorage';
 
 export const reducer = combineReducers({
   form: reduxFormReducer,// mounted under "form"
@@ -17,12 +18,12 @@ export const  records = [
 				        	{
 				        		"name": "John",
 				        		"nameStatus": "valid",
-				        		"email": "mike!mail.com",
-				        		"emailStatus": "invalid"
+				        		"email": "mike2@mail.com",
+				        		"emailStatus": "valid"
 				        	},
 				        	{
-				        		"name": "agent007",
-				        		"nameStatus": "invalid",
+				        		"name": "Agent",
+				        		"nameStatus": "valid",
 				        		"email": "007@mi5.uk",
 				        		"emailStatus": "valid"
 				        	}
@@ -35,8 +36,8 @@ function configureStore(initialState = {}) {
 
 export const store = createStore(reducer, {
 	addDeleteRecord: {
-		records: records, 
+		records: getRecordsFromLocal(), 
 		forms: {}, 
-		errorFlags: {} 
+		errorFlags: {email: 'valid', name: 'valid'} 
 	}
 });  
