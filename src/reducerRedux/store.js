@@ -35,8 +35,8 @@ function configureStore(initialState = {}) {
 
 export const store = createStore(reducer, {
 	addDeleteRecord: {
-			records: records, 
-			forms: {}, 
-			errorFlags: {} 
-		}
-	});  
+		records: records, 
+		forms: {}, 
+		errorFlags: {} 
+	}
+});  

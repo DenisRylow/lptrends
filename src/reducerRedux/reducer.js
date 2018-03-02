@@ -1,3 +1,5 @@
+import { checkName, checkEmail } from '../validation/validationMethods.js';
+
 const addToRecordsEmailName = (state) => {
 	let record = { 
 		name: state.forms['name'], 
@@ -7,24 +9,36 @@ const addToRecordsEmailName = (state) => {
 		records: state.records.concat([record])
 	});
 };
+
 export const addDeleteRecord = (state = {}, action) => {
+	/*
+	State has three properties: 
+	1. 'records' property is an array 
+	where records containing names and emails re stored. 
+	2. 'forms' is a property where input values from all forms are stored.
+	3. 'errorFlags' is a property that 
+	indicates whether the input of each corresponding form is valid.
+	*/
 	switch (action.type) {
 		/* 
 		It is assumed that the redux form containing 
-		email input field is called 'email' and its a input field value
-		is stored 'forms' object where in a property called 'email'.
+		email input field is called 'email' and its input field value
+		is stored in 'forms' object in a property called 'email'.
 		Similarly, the redux form called 'name' containes the name
 		and the value of the corresponding input field. This value
 		is stored in property 'name' of 'forms' object.
 		*/
 		case 'ADD_RECORD_EMAIL_NAME':
-			let record = { 
-				name: state.forms['name'], 
-				email: state.forms['email']
+			return addToRecordsEmailName(state);
+		case 'VALIDATE_ADD_RECORD_EMAIL_NAME':
+			state.errorFlags['name'] = checkName(state.forms['name']);
+			state.errorFlags['email'] = checkName(state.forms['email']);
+			if (state.errorFlags['name'] == 'valid' && state.errorFlags['email'] == 'valid') {
+				console.log('Adding a new record to the table.');
+				return addToRecordsEmailName(state);
+			} else {
+				return state;
 			};
-			return Object.assign({}, state, {
-				records: state.records.concat([record])
-			});
 		case 'DELETE_RECORD':
 			console.log('Deleting record.');
 			return Object.assign({}, state, {

@@ -13,6 +13,13 @@ export const addRecordEmailName = () => {
 }
 
 
+export const validateAndAddRecordEmailName = () => {
+	return {
+		type: 'VALIDATE_ADD_RECORD_EMAIL_NAME'
+	}
+}
+
+
 export const deleteRecord = (id) => {
 	return {
 		type: 'DELETE_RECORD',
