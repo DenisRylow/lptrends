@@ -9,9 +9,9 @@ import { createStore } from 'redux';
 import AppContainer from './AppContainer';
 
 ReactDOM.render(	
-	  <Provider store={store}>
-		 <AppContainer />
-	  </Provider>,
+	<Provider store={store}>
+		<AppContainer />
+        </Provider>,
 	document.getElementById('app')
 )
 
