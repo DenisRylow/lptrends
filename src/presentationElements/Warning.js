@@ -1,26 +1,24 @@
 import React, { Component } from 'react'
 
 class Warning extends Component {
-  constructor(props) {
-    super(props);
-    this.props.errorFlags = props.errorFlags;
-    this.props.errorTrigger = false;
-    this.props.message = 'Ошибка при вводе данных.';
-    if (this.props.errorFlags['email'] != 'valid') {
-      this.props.message += ' Неправильный формат электронного адреса.';
-      this.props.errorTrigger = true;
-    };
-    if (this.props.errorFlags['name'] != 'valid') {
-      this.props.message += ' Неправильный формат имени. Имя должно начинаться с большой буквы и быть длинной не менее 4 символов.';
-      this.props.errorTrigger = true;
-    };
-    console.log('Warning header created. Trigger is ', this.props.errorTrigger);
-  }
   render() {
-    if(this.props.errorTrigger) {
+    const { errorFlags } = this.props;
+    var errorTrigger = false;
+    var message = '';
+    console.log('Warning component rendering.', errorFlags);
+    if (errorFlags['email'] != 'valid') {
+      message += ' Неправильный формат электронного адреса.';
+      errorTrigger = true;
+    };
+    if (errorFlags['name'] != 'valid') {
+      message += ' Неправильный формат имени. Имя должно начинаться с большой буквы и быть длинной не менее 4 символов.';
+      errorTrigger = true;
+    };
+    console.log('Warning component rendering. Error flag.', errorTrigger);
+    if(errorTrigger) {
       return(
         <div ref="warning" className="alert alert-warning" role="alert">
-          {this.props.message}
+          Ошибка. {message}        
         </div>
       )
     } else {
@@ -29,7 +27,7 @@ class Warning extends Component {
          
         </div>
       )
-    }        
+    };  
   }
 }
 
@@ -46,5 +44,26 @@ export default Warning;
       message += ' Неправильный формат имени. Имя должно начинаться с большой буквы и быть длинной не менее 4 символов.';
       errorTrigger = true;
     };
+
+  constructor(props) {
+    super(props);
+    this.errorFlags = props.errorFlags;
+    this.errorTrigger = false;
+    this.message = 'Ошибка при вводе данных.';
+    if (this.errorFlags['email'] != 'valid') {
+      this.message += ' Неправильный формат электронного адреса.';
+      this.errorTrigger = true;
+    };
+    if (this.errorFlags['name'] != 'valid') {
+      this.message += ' Неправильный формат имени. Имя должно начинаться с большой буквы и быть длинной не менее 4 символов.';
+      this.errorTrigger = true;
+    };
+    console.log('Warning header created. Trigger is ', this.errorTrigger, ', props:', props);
+  }
+  
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('Warning component checks for updates.', nextProps.errorFlags != this.errorFlags);
+    return nextProps.errorFlags != this.errorFlags;  
+  }
 
   */}

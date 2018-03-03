@@ -7,29 +7,13 @@ import TableRowWithRecordInformation  from './TableRowWithRecord';
 import Warning from './Warning';
 
 class App extends React.Component {
-	produceWarning(errorFlags) {
-		if(errorFlags['email'] != 'valid' || errorFlags['name'] != 'valid') {
-			return(
-				<div ref="warning" className="alert alert-warning" role="alert">
-					Ошибка при вводе данных. Имя должно начинаться с большой буквы и быть длинной не менее 4 символов.
-					Электронная почта должна быть верного формата.
-				</div>
-			);
-		}
-	}
 	render() {
 		return(
 			<div>
 				{/* Trigger warning. */}
-				{/* For some reason Warning component does not work.
-				this.props.errorFlags change but the state inside the component is not updated. 	
-				So for now I am using a function to render the warning.
-
 				<Warning errorFlags={this.props.errorFlags}/> 
-				*/}	
-				{this.produceWarning(this.props.errorFlags)}
-
-                {/* Table with emails  */}
+				
+				{/* Table with emails  */}
 				<Table className='table'>
 				<tbody>					
 					<tbody>
@@ -89,13 +73,13 @@ class App extends React.Component {
 					*/}
 					{(typeof this.props.records != 'undefined') && 
 					this.props.records.map((item, index) => (
-							<TableRowWithRecordInformation 
-							record={item}
-							index={index}
-							onClick={this.props.deleteRecord}/>
+						<TableRowWithRecordInformation 
+						record={item}
+						index={index}
+						onClick={this.props.deleteRecord}/>
 					))}
 				</tbody>
-                </Table> 
+				</Table> 
 			</div>
 		);
 	}

@@ -12,8 +12,8 @@ class Input extends Component {
         className={errorState}
         placeholder={(typeof placeHolderText != 'undefined') && placeHolderText}
         onChange={(e) => {
-        	console.log('Form ', formName, ' updates with value', e.target.value,
-            ' errorState ', errorState, ' and error flag ', errorFlag);
+        	console.log('Form ', formName, ' updates with value ', e.target.value,
+            ' ,errorState is ', errorState, ' ,and error flag is ', errorFlag);
         	onChangeAction(e.target.value, formName);
         }}/>
       </FormGroup>
