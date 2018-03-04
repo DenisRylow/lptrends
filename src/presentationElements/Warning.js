@@ -18,7 +18,7 @@ class Warning extends Component {
     if(errorTrigger) {
       return(
         <div ref="warning" className="alert alert-warning" role="alert">
-          Ошибка. {message}        
+          <strong>Ошибка!</strong> {message}        
         </div>
       )
     } else {

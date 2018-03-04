@@ -29,10 +29,13 @@ class App extends React.Component {
 					<tbody>
 					{/* 
 					There is a single form with a single input field in each 'ReduxFormContainer'.		
-					The callback function 'this.props.updateFormFieldValue' is sent to every container.
-					This function updates the 'forms' object in the global Redux state which
+					The callback function 'this.props.updateFormFieldValue' is used by every container
+					to write the input value into global Redux state.
+					The function updates the 'forms' object in the global Redux state which
 					stores the value of each corresponding form.
-					Updating is done via Redux dispatch.
+					The function 'this.props.resetErrorFlag' is also called on every form value update.
+					This has the effect of resetting the error state of the corresponding form after the
+					bad attempt to record the name and email into the table has been made.
 					*/} 
 					<td className='secondRow'>
 						<ReduxFormContainer 

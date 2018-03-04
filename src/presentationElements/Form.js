@@ -21,7 +21,10 @@ class ReduxForm extends Component {
 					component={Input}
 					errorFlag={errorFlag}
 					placeHolderText={placeHolderText}
-					onChangeAction={onChangeAction}/>
+					onChange={(e) => {
+						console.log('ReduxForm has updated ', form, ' with value ' ,e.target.value);
+						onChangeAction(e.target.value, form);
+					}}/>
 				</div>
 			</form>
 		);
